@@ -1,0 +1,66 @@
+// .main_content_register_user_header {
+//     background: #000;
+//     width: 91%;
+//     height: 100px;
+//     padding: 20px 10px 10px 10px;   
+    
+//     float: right;
+//     margin: 0px;
+//   }
+.jumbotron {
+    width: 80%;
+    margin-bottom: 2rem;
+    background-color: #111;
+    
+  }
+  
+  .jumbotron-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+  }
+
+.testex{
+    color: #fff;
+    font-size: 30px;
+    padding: 10px;
+   
+}
+
+.span{
+    padding: 0 15px;
+    
+}
+
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+   
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+
+  
+  @media(max-height: 350px) {
+    .container-fluid {padding-top: 15px;}
+    .container-fluid a {font-size: 18px;}
+  }

@@ -1,0 +1,457 @@
+/*
+GENERAL
+ */
+body{
+  //overflow:hidden;
+  margin: 0 auto;
+  width:100%;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  //margin: -480px;
+  height: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+}
+
+
+.container2 {
+  width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+ // position: static;
+}
+
+
+.container-fluid {
+  width: 95%;
+  float: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+ background: #303030;
+ 
+}
+
+
+
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    
+  }
+  
+  
+  /*
+  FLEX
+  */
+  
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .flex-1 {
+      flex-basis: calc(100% - 40px);
+     
+    }
+    .flex-2 {
+      flex-basis: calc(50% - 40px);
+    
+    }
+    .flex-3 {
+      flex-basis: calc(33.33% - 40px);
+     
+    }
+    .flex-4 {
+      flex-basis: calc(25% - 40px);
+     
+    }
+    .flex-5{
+      flex-basis: calc(25% - 40px);
+     
+    }
+
+    .flex-6 {
+      flex-basis: calc(10% - 20px);
+      margin: 20px;
+    }
+  
+  
+  }
+  
+  .flex-auto {
+    margin: 0 auto;
+  }
+  
+  /*
+  BOXSTYLES
+  */
+  
+  .radius {
+    --radius: 4px;
+    border-radius: var(--radius);
+    -moz-border-radius: var(--radius);
+    -webkit-border-radius: var(--radius);
+  }
+  
+  .rounded {
+    --radius: 50%;
+    border-radius: var(--radius);
+    -moz-border-radius: var(--radius);
+    -webkit-border-radius: var(--radius);
+  }
+  
+  .transition {
+    --seconds: 0.2s;
+    transition-duration: var(--seconds);
+    -moz-transition-duration: var(--seconds);
+    -webkit-transition-duration: var(--seconds);
+    cursor: pointer;
+  }
+  
+  /*
+  HEADER
+   */
+  
+  
+  /*
+  PANEL SLIDER
+   */
+  .main_content_panel_slider {
+    margin-top: 60px;
+    flex-basis: 50%;
+    margin-left: 8%;
+  }
+  
+  .main_content_panel_slider_header {
+    background: #555;
+    padding: 10px;
+    span {
+      color: #fff;
+      font-size: 1.7em;
+      margin: 0 15px 0 15px;
+      margin-top: 10px;
+    }
+    p {
+      color: #fff;
+      font-size: 1.5em;
+      font-weight: 400;
+      display: inline-block;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      float: right;
+      margin-top: 15px;
+      margin-right: 10px;
+    }
+  }
+  
+  .main_content_panel_slider_img img {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /*
+  PANEL BUTTONS
+   */
+  
+  .main_content_panel_buttons_main {
+    flex-basis: 32%;
+    margin-top: 40px;
+  }
+  
+  .main_content_panel_buttons {
+    margin: 0 auto;
+    display: inline-block;
+  }
+  
+  .main_content_panel_buttons_a {
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    /*padding: 30px 40px;*/
+    width: 150px;
+    height: 125px;
+    background: crimson;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    &:hover {
+      background: red;
+    }
+    span {
+      font-size: 2em;
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 15px 0;
+    }
+    a {
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      font-weight: 400;
+      display: block;
+    }
+  }
+  
+  /*
+  REGISTER USER
+  */
+  
+  /*
+  ASIDE
+   */
+  
+   
+  .main_content_register_user_header span{
+    color: #fff;
+    font-size: 2em;
+    margin-right: 20px;
+  }
+  
+  .main_content_register_user_header h2, h3, h4 {
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0 20px 0 0;
+  }
+  
+  // .main_content_register_user_form {
+  //   width: 90%;
+  //   float: right;
+  //   position: relative;
+  // }
+  
+  // .main_content_register_user_form h1 {
+  //   font-size: 1.7em;
+  //   margin: 20px 0 20px 20px;
+  // }
+  
+  // .main_content_register_user_form h2{
+  //   font-size: 1.3em;
+  //   margin: 20px 0 20px 20px;
+  //   color: #777;
+  // }
+  
+  // .main_content_register_user_search_form input {
+  //   width: 30%;
+  //   font-size: 0.875em;
+  //   padding: 10px;
+  //   /*border: 1px solid var(--red);*/
+  //   outline: none;
+  //   float: right;
+  //   margin: 20px 20px 20px 0;
+  // }
+  // .main_content_register_user_form input, select {
+  //   width: 100%;
+  //   font-size: 0.875em;
+  //   padding: 10px;
+  //   overflow: hidden;
+  //   outline: none;
+  // }
+  
+  // .main_content_register_user_form_check{
+  //   display: inline-block;
+  //   margin: 0 0 0 20px;
+  //   background: #eee;
+  //   padding: 8px;
+  //   float: left;
+  //   display: flex;
+  
+  // }
+  
+  // .main_content_register_user_form_deficiencia_check{
+  //   display: inline-block;
+  //   margin: 0px 0 0 10px;
+  //   float: left;
+  //   margin-left: 150px;
+  // }
+  
+  
+  // .main_content_register_user_form2 hr{
+  //   height:2px;
+  //   width: 100vh;
+  //   border:none;
+  //   color:#000;
+  //   background-color:#000;
+  //   margin-top: 0px;
+  //   margin-bottom: 0px;
+  //   margin-left: 70px;
+  // }
+  
+  // .main_content_register_user_form2 {
+  //   width: 100%;
+  //   float: right;
+  //   position: relative;
+  // }
+  
+  // .main_content_register_user_form2 h1 {
+  //   font-size: 1.7em;
+  //   margin: 20px 0 20px 20px;
+  //   margin-left: 150px;
+  // }
+  
+  // .main_content_register_user_form2 h4 {
+  //   font-size: 1.3em;
+  //   margin: 20px 0 20px 20px;
+  //   color: #777;
+  //   margin-left: 150px;
+  // }
+  
+  
+  
+  
+  
+  // .main_content_register_user_form_check label{
+  //   margin-left: 10px;
+  //   padding: 0;
+  //   width: 100%;
+  // }
+  
+  .main_content_form_register_btn{
+    border: none;
+    padding: 10px 20px;
+    background: crimson;
+    color: #fff;
+    float: right;
+    margin: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .main_content_form_register_btn_search{
+    border: none;
+    padding: 13px 20px;
+    background: crimson;
+    color: #fff;
+    float: right;
+    margin: 20px 0 20px 0;
+    text-transform: uppercase;
+  }
+  
+  // .main_content_register_user_form_warning span p{
+  //   display: inline-block;
+  //   margin-left: 10px;
+  // }
+  
+  /*
+  FORMS
+ 
+  
+  .nav_register{
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 20px;
+  }
+  
+  .nav_register span{
+    font-size: 0.875em;
+    color: crimson;
+    margin-left: 10px;
+  }
+    */
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+      line-height: 1.2;
+      color: inherit;
+    }
+    
+    h1, .h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2, .h2 {
+      font-size: 1.0rem;
+    }
+    
+    h3, .h3 {
+      font-size: 1.75rem;
+    }
+    
+    h4, .h4 {
+      font-size: 1.5rem;
+    }
+    
+    h5, .h5 {
+      font-size: 1.25rem;
+    }
+    
+    h6, .h6 {
+      font-size: 1rem;
+    }    
+    
+    
+    .display-1 {
+      font-size: 6rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-2 {
+      font-size: 5.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-3 {
+      font-size: 4.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-4 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: red;
+    }
+
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
