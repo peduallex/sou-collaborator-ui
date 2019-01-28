@@ -1,6 +1,47 @@
 /*
 GENERAL
  */
+body{
+  //overflow:hidden;
+  margin: 0 auto;
+  width:100%;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  //margin: -480px;
+  height: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+}
+
+
+.container2 {
+  width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+ // position: static;
+}
+
+
+.container-fluid {
+  width: 95%;
+  float: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+ background: #303030;
+ 
+}
+
+
+
 
  * {
     margin: 0;
@@ -9,12 +50,9 @@ GENERAL
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    
   }
   
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
   
   /*
   FLEX
@@ -23,25 +61,32 @@ GENERAL
   .flex {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+
     .flex-1 {
       flex-basis: calc(100% - 40px);
-      margin: 20px;
+     
     }
     .flex-2 {
       flex-basis: calc(50% - 40px);
-      margin: 20px;
+    
     }
     .flex-3 {
       flex-basis: calc(33.33% - 40px);
-      margin: 20px;
+     
     }
     .flex-4 {
       flex-basis: calc(25% - 40px);
-      margin: 20px;
+     
     }
     .flex-5{
       flex-basis: calc(25% - 40px);
-      margin: 45px 0px 0px 0px;
+     
+    }
+
+    .flex-6 {
+      flex-basis: calc(10% - 20px);
+      margin: 20px;
     }
   
   
@@ -81,39 +126,6 @@ GENERAL
   HEADER
    */
   
-  .main_header {
-    background: #777;
-    padding: 3px;
-  }
-  
-  .main_header_logo {
-    flex-basis: 75%;
-  }
-  
-  .main_header_logo_img {
-    color: #fff;
-  }
-  
-  .main_header_user_icons {
-    flex-basis: 25%;
-    margin-top: 10px;
-  }
-  
-  .main_header_user_icons_icon {
-    font-size: 1.4em;
-    margin-left: 10px;
-    color: #fff;
-  }
-  
-  .main_header_user_icons p {
-    color: #fff;
-    font-size: 1.2em;
-  }
-  
-  .main_header_user_icons_info {
-    float: left;
-    margin-right: 10px;
-  }
   
   /*
   PANEL SLIDER
@@ -208,35 +220,7 @@ GENERAL
   ASIDE
    */
   
-  .main_content_register_user_aside {
-    background: crimson;
-    width: 10%;
-    height: 170vh;
-    position: absolute;
-  }
-  
-  .main_content_register_user_aside_links{
-    text-align: center;
-    margin: 40px 20px;
-  }
-  
-  .main_content_register_user_aside a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 2.5em;
-    border: 1px solid #fff;
-    padding: 10px 20px;
-  }
-  
-  .main_content_register_user_header {
-    background: #000;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    width: 90%;
-    float: right;
-  }
-  
+   
   .main_content_register_user_header span{
     color: #fff;
     font-size: 2em;
@@ -248,100 +232,100 @@ GENERAL
     font-weight: 400;
     text-transform: uppercase;
     display: inline-block;
-    margin: 0 10px 0 0;
+    margin: 0 20px 0 0;
   }
   
-  .main_content_register_user_form {
-    width: 90%;
-    float: right;
-    position: relative;
-  }
+  // .main_content_register_user_form {
+  //   width: 90%;
+  //   float: right;
+  //   position: relative;
+  // }
   
-  .main_content_register_user_form h1 {
-    font-size: 1.7em;
-    margin: 20px 0 20px 20px;
-  }
+  // .main_content_register_user_form h1 {
+  //   font-size: 1.7em;
+  //   margin: 20px 0 20px 20px;
+  // }
   
-  .main_content_register_user_form h2{
-    font-size: 1.3em;
-    margin: 20px 0 20px 20px;
-    color: #777;
-  }
+  // .main_content_register_user_form h2{
+  //   font-size: 1.3em;
+  //   margin: 20px 0 20px 20px;
+  //   color: #777;
+  // }
   
-  .main_content_register_user_search_form input {
-    width: 30%;
-    font-size: 0.875em;
-    padding: 10px;
-    /*border: 1px solid var(--red);*/
-    outline: none;
-    float: right;
-    margin: 20px 20px 20px 0;
-  }
-  .main_content_register_user_form input, select {
-    width: 100%;
-    font-size: 0.875em;
-    padding: 10px;
-    overflow: hidden;
-    outline: none;
-  }
+  // .main_content_register_user_search_form input {
+  //   width: 30%;
+  //   font-size: 0.875em;
+  //   padding: 10px;
+  //   /*border: 1px solid var(--red);*/
+  //   outline: none;
+  //   float: right;
+  //   margin: 20px 20px 20px 0;
+  // }
+  // .main_content_register_user_form input, select {
+  //   width: 100%;
+  //   font-size: 0.875em;
+  //   padding: 10px;
+  //   overflow: hidden;
+  //   outline: none;
+  // }
   
-  .main_content_register_user_form_check{
-    display: inline-block;
-    margin: 0 0 0 20px;
-    background: #eee;
-    padding: 8px;
-    float: left;
-    display: flex;
+  // .main_content_register_user_form_check{
+  //   display: inline-block;
+  //   margin: 0 0 0 20px;
+  //   background: #eee;
+  //   padding: 8px;
+  //   float: left;
+  //   display: flex;
   
-  }
+  // }
   
-  .main_content_register_user_form_deficiencia_check{
-    display: inline-block;
-    margin: 0px 0 0 10px;
-    float: left;
-    margin-left: 150px;
-  }
-  
-  
-  .main_content_register_user_form2 hr{
-    height:2px;
-    width: 100vh;
-    border:none;
-    color:#000;
-    background-color:#000;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 70px;
-  }
-  
-  .main_content_register_user_form2 {
-    width: 100%;
-    float: right;
-    position: relative;
-  }
-  
-  .main_content_register_user_form2 h1 {
-    font-size: 1.7em;
-    margin: 20px 0 20px 20px;
-    margin-left: 150px;
-  }
-  
-  .main_content_register_user_form2 h4 {
-    font-size: 1.3em;
-    margin: 20px 0 20px 20px;
-    color: #777;
-    margin-left: 150px;
-  }
+  // .main_content_register_user_form_deficiencia_check{
+  //   display: inline-block;
+  //   margin: 0px 0 0 10px;
+  //   float: left;
+  //   margin-left: 150px;
+  // }
   
   
+  // .main_content_register_user_form2 hr{
+  //   height:2px;
+  //   width: 100vh;
+  //   border:none;
+  //   color:#000;
+  //   background-color:#000;
+  //   margin-top: 0px;
+  //   margin-bottom: 0px;
+  //   margin-left: 70px;
+  // }
+  
+  // .main_content_register_user_form2 {
+  //   width: 100%;
+  //   float: right;
+  //   position: relative;
+  // }
+  
+  // .main_content_register_user_form2 h1 {
+  //   font-size: 1.7em;
+  //   margin: 20px 0 20px 20px;
+  //   margin-left: 150px;
+  // }
+  
+  // .main_content_register_user_form2 h4 {
+  //   font-size: 1.3em;
+  //   margin: 20px 0 20px 20px;
+  //   color: #777;
+  //   margin-left: 150px;
+  // }
   
   
   
-  .main_content_register_user_form_check label{
-    margin-left: 10px;
-    padding: 0;
-    width: 100%;
-  }
+  
+  
+  // .main_content_register_user_form_check label{
+  //   margin-left: 10px;
+  //   padding: 0;
+  //   width: 100%;
+  // }
   
   .main_content_form_register_btn{
     border: none;
@@ -349,7 +333,7 @@ GENERAL
     background: crimson;
     color: #fff;
     float: right;
-    margin: 20px;
+    margin: 10px;
     text-transform: uppercase;
     cursor: pointer;
   }
@@ -364,14 +348,14 @@ GENERAL
     text-transform: uppercase;
   }
   
-  .main_content_register_user_form_warning span p{
-    display: inline-block;
-    margin-left: 10px;
-  }
+  // .main_content_register_user_form_warning span p{
+  //   display: inline-block;
+  //   margin-left: 10px;
+  // }
   
   /*
   FORMS
-   */
+ 
   
   .nav_register{
     text-align: center;
@@ -384,4 +368,90 @@ GENERAL
     color: crimson;
     margin-left: 10px;
   }
-  
+    */
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+      line-height: 1.2;
+      color: inherit;
+    }
+    
+    h1, .h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2, .h2 {
+      font-size: 1.0rem;
+    }
+    
+    h3, .h3 {
+      font-size: 1.75rem;
+    }
+    
+    h4, .h4 {
+      font-size: 1.5rem;
+    }
+    
+    h5, .h5 {
+      font-size: 1.25rem;
+    }
+    
+    h6, .h6 {
+      font-size: 1rem;
+    }    
+    
+    
+    .display-1 {
+      font-size: 6rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-2 {
+      font-size: 5.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-3 {
+      font-size: 4.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+    
+    .display-4 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: red;
+    }
+
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }

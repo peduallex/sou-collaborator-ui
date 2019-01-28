@@ -1,18 +1,35 @@
-import React,{Component} from'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Section, Location, Icon, Title, Links, Item, Link } from './styles';
 
-class HeaderForm extends Component{
-    constructor(props){
-        super(props)
-    }
+const Jumbotron = ({ icon, title, links }) => (
+  <Section>
+    <Location>
+      <Icon src={icon} />
+      <Title>{title}</Title>
+    </Location>
+    <Links>
+      {links.map(item => (
+        <Item key={item.name}>
+          <Link active={item.active} href={item.url}>
+            {item.name}
+          </Link>
+        </Item>
+      ))}
+    </Links>
+  </Section>
+);
 
-    render(){
-        return(
-            <div className="main_content_register_user_header">
-                <span className="icon-newspaper"></span><h2>Colaboradores // </h2><h4> Módulo de usuários,
-                autenticação econtrole de acesso</h4>
-            </div>
-        )
-    }
-}
+Jumbotron.propTypes = {
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      active: PropTypes.bool.isRequired,
+      url: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
+};
 
-export default HeaderForm
+export default Jumbotron;

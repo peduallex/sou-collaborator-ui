@@ -3,7 +3,7 @@ import Imagem from  '../../assets/img/slider.jpg';
 
 class Slider extends Component{
     constructor(props){
-        super(props)
+        super(props);
     }
 
     render(){
