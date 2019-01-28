@@ -29,6 +29,7 @@ const FormStep1 = props => {
 
             <div className="col-md-6">
               <label htmlFor="lastName">Sobrenome</label>
+
               <Field name="last_name" className="form-control" />
               {errors.last_name && touched.last_name ? (
                 <div>{errors.last_name}</div>

@@ -6,6 +6,7 @@ import StepSummary from "../../pages/StepSummary";
 import Main from './styles';
 import Avaliations from '../../assets/imgs/avaliacoes.svg';
 
+
 const links = [
   {
     name: 'Autentificação',
@@ -18,6 +19,7 @@ const links = [
     active: false,
     url: '/groups'
   },
+
   {
     name: 'Seleção & Contratação',
     active: false,
@@ -25,6 +27,7 @@ const links = [
   },
   {
     name: 'Administrativo',
+
     active: false,
     url: '/administrative'
   },
@@ -39,6 +42,7 @@ const links = [
 const Content = () => (
   <Fragment>
     <Jumbotron title="COLABORADORES" icon={Avaliations} links={links} />
+
     <Main>
       <BrowserRouter>
         <Switch>
@@ -51,6 +55,7 @@ const Content = () => (
                 {/* <Route path='/visualizar' component={Visualizar}/> */}
                 <Route
                   path={`/employees`}
+
                   component={StepSummary}
                 />
               </Fragment>

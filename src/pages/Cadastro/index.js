@@ -17,6 +17,7 @@ class Cadastro extends Component {
     this.state = {
       step: 1,
       edit: false,
+
       forms: [],
       addresses: [],
       naturalyId: [],
@@ -78,9 +79,7 @@ class Cadastro extends Component {
       this.setState({ dismissal_date: moment(date).format('YYYY-MM-DD') })
       this.setState({ date: this.state['work_contract.dismissal_date'] })
     });
-  };  
-
-
+  };
 
   handleCep = async ({ target }) => {
     const res = await cep.get(`${target.value}/json`);
@@ -206,6 +205,7 @@ class Cadastro extends Component {
                  gender: '',
                  birth_date: '',
                  parentage_type_id: ''
+
               }
             ],
           occupation_id: '',

@@ -59,11 +59,13 @@ const FormStep2 = props => {
                         <div className="form-group col-md-3">
                             <label htmlFor="inputZip">Cidade</label>
                             <Field name="city.name" className="form-control" value={endereco.localidade} />
+
                         </div>
 
                         <div className="form-group col-md-2">
                             <label htmlFor="inputZip">UF</label>
                             <Field name="city.state" className="form-control" value={endereco.uf} />
+
                         </div>
 
                     </div>
@@ -101,7 +103,7 @@ const FormStep2 = props => {
 
                         <div className="form-group col-md-04">
                             <label htmlFor="inputZip">E-mail</label>
-                            <Field name="email.email" className="form-control" />
+                               <Field name="email.email" className="form-control" />
                         </div>
                     </div>
 
