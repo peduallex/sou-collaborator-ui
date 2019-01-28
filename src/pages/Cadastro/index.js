@@ -16,6 +16,8 @@ class Cadastro extends Component {
     super(props);
     this.state = {
       step: 1,
+      edit: false,
+
       forms: [],
       addresses: [],
       naturalyId: [],
@@ -28,11 +30,16 @@ class Cadastro extends Component {
       hiring_date: '',
       term: '' ,
       dismissal_date: ''
-
     };
   }
 
   async componentWillMount() {
+    const { location, history } = this.props
+
+    if (location.state && location.state.step) {
+      this.setState({ step: location.state.step, edit: true })
+      history.push('/cadastro', {})
+    }
     const naturalyId = await api.get('nationalities');
     const countryId = await api.get('countries');
     const statusesId = await api.get('marital-statuses');
@@ -57,29 +64,22 @@ class Cadastro extends Component {
   };
 
 
-  handleSubmit = values => {
-    //api.post('users', this.state.email);
-    api.post('employees', this.state.forms);
-    console.log(values);
-    // api_andresses.post('addresses', this.state.forms.addresses);
-    this.props.history.push("/Visualizar")
+  handleSubmit = async values => {
+    //api.post('employees', this.state.forms);
+    // const id = await api.post('employees', this.state.forms)
+     //this.props.history.push("/StepSummary/" + id)
+     this.props.history.push("/employees", { values })
+    //this.props.history.push("/Visualizar")
   };
-
-
-  // handleClick = () => {
-  //   //this.props.onHeaderClick(this.props.values);
-  //   this.setState({ forms: { ...values } });
-  //   console.log(values);
-  // }
 
   Calcular = event => {
-    this.setState({ [event.target.name]: event.target.value });
-    const date = new Date(this.state.hiring_date);
-    date.setDate((date.getDate())  +  date.getMonth() + 1 + Number(this.state.term))
-    this.setState({ dismissal_date: moment(date).format('YYYY-MM-DD') })
+    this.setState({ [event.target.name]: event.target.value }, () => {
+      const date = new Date(this.state['work_contract.hiring_date']);
+      date.setDate((date.getDate())  +  date.getMonth() + 1 + Number(this.state['work_contract.term']))
+      this.setState({ dismissal_date: moment(date).format('YYYY-MM-DD') })
+      this.setState({ date: this.state['work_contract.dismissal_date'] })
+    });
   };
-
-
 
   handleCep = async ({ target }) => {
     const res = await cep.get(`${target.value}/json`);
@@ -155,25 +155,25 @@ class Cadastro extends Component {
           ethnicity_id: '',
           marital_status_id: '',
           address: {
-            neighborhood: '',
-            street: '',
-            street_number: '',
-            street_type: '',
-            zipcode: '',
-            street_complement: '',
-            state: '',
-            city_id: null
+             neighborhood: '',
+             street: '',
+             street_number: '',
+             street_type: 'eeeee',
+             zipcode: '',
+             street_complement: '',
+             state: 'xx',
+             city_id: null
           },
           city: {
             name: '',
             state: '',
-            code: ''
+            code: '00000'
           },
           telephone: {
-            ddd: '',
+            ddd: 'DDD',
             telephone: '',
             telephone_type: '',
-            ddi: ''
+            ddi: 'DDI'
           },
           email: {
             email: '',
@@ -201,10 +201,11 @@ class Cadastro extends Component {
           parentages:
             [
               {
-                name: '',
-                gender: '',
-                birth_date: '',
-                parentage_type_id: ''
+                 name: '',
+                 gender: '',
+                 birth_date: '',
+                 parentage_type_id: ''
+
               }
             ],
           occupation_id: '',
@@ -212,7 +213,7 @@ class Cadastro extends Component {
             [
               {
                 date_issued: '',
-                description: '',
+                description: 'xxxx',
                 number: '',
                 series_number: '',
                 state_issued: '',
@@ -223,24 +224,22 @@ class Cadastro extends Component {
               }
             ],
           work_contract: {
-            hiring_date: '',
-            end_date: '',
-            examination_date: '',
-            dismissal_date: '',
-            flag_fixed_term: '',
-            term: '',
-            new_end_date: '',
-            new_term: '',
-            contracting_regime_id: '',
-            address_id: null,
-            employee_id: null
+            hiring_date: '2005-09-21',
+            end_date: '2005-09-21',
+            examination_date: '2005-09-21',
+            dismissal_date: '2005-09-21',
+            flag_fixed_term: 'S',
+            term: '10',
+            new_end_date: '2005-09-21',
+            new_term: '100000',
+            contracting_regime_id: '1',
           },
           tax_benefits:
             [
               {
-                name: '',
-                code: '',
-                value: ''
+                name: 'zzz',
+                code: '1234567890',
+                value: '10.10'
               }
             ]
 
@@ -252,57 +251,13 @@ class Cadastro extends Component {
       />
     ) : step === 2 ? (
       <Formik onSubmit={this.handleNext}
-        // initialValues={{
-        //   addresses: {
-        //     neighborhood: "",
-        //     street: "",
-        //     street_number: "",
-        //     street_type: "",
-        //     zipcode: "",
-        //     street_complement: "",
-        //     state: "",
-        //     city_id: ""
-        //   },
-        // }}
         render={props => <FormStep2{...props} handlePrev={this.handlePrev} handleCep={this.handleCep} endereco={this.state.endereco} ></FormStep2>}
       />
     ) : step === 3 ? (
       <Formik onSubmit={this.handleNext}
-        //  initialValues={{
-        //    dependents: {
-        //      name: '1',
-        //      dependent_type_id: '1',
-        //      birth_date: '1',
-        //      cpf: '1',
-        //      employee_id: 'null',
-        //    },
-        //    parentages:
-        //     {
-        //       name: '1',
-        //       gender: '1',
-        //       birth_date: '1111-11-11',
-        //       parentage_type_id: '1'
-        //     }
-
-        //  }}
         render={props => <FormStep3 {...props} handlePrev={this.handlePrev} />} />
     ) : step === 4 ? (
       <Formik onSubmit={this.handleNext}
-        // initialValues={{
-        //   identities: 
-        //     {
-        //       date_issued: '1111-11-11',
-        //       description: '',
-        //       number: '',
-        //       series_number: '',
-        //       state_issued: '1111-11-11',
-        //       zone: '11',
-        //       section: '11',
-        //       identity_type_id: '1',
-        //       issuing_entity_id: '1'
-        //     }
-        // }}
-
         render={formikProps => <FormStep4 {...formikProps} handlePrev={this.handlePrev} />} />
     ) : step === 5 ? (
       <Formik onSubmit={this.handleNext}
@@ -311,8 +266,8 @@ class Cadastro extends Component {
       <Formik onSubmit={this.handleSubmit}
         render={props => <FormStep6 {...props} handlePrev={this.handlePrev} Calcular={this.Calcular} dismissal_date={this.state.dismissal_date} />} />
     ) : (
-                  ''
-                );
+      ''
+  );
   }
 }
 

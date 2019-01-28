@@ -58,12 +58,14 @@ const FormStep2 = props => {
 
                         <div className="form-group col-md-3">
                             <label htmlFor="inputZip">Cidade</label>
-                            <Field name="address.city_id" className="form-control" value={endereco.localidade} />
+                            <Field name="city.name" className="form-control" value={endereco.localidade} />
+
                         </div>
 
                         <div className="form-group col-md-2">
                             <label htmlFor="inputZip">UF</label>
-                            <Field name="address.state" className="form-control" value={endereco.uf} />
+                            <Field name="city.state" className="form-control" value={endereco.uf} />
+
                         </div>
 
                     </div>
@@ -71,7 +73,7 @@ const FormStep2 = props => {
                     <div className="form-row">
                         <div className="form-group col-md-13">
                             <label htmlFor="inputZip">Tipo Telefone</label>
-                            <Field component="select" name="telephones.telephone_type" id="telephone_type" className="form-control">
+                            <Field component="select" name="telephone.telephone_type" id="telephone_type" className="form-control">
                                 <option value="">-</option>
                                 <option value="Celular">Celular</option>
                                 <option value="Residencial">Residencial</option>
@@ -81,7 +83,7 @@ const FormStep2 = props => {
                         <div className="form-group col-md-3">
                             <label htmlFor="inputZip">Telefone</label>
                             {/* <Field name="telephones.telephone" className="form-control" /> */}
-                            <Field name="telephones.telephone" render={({ field }) => {
+                            <Field name="telephone.telephone" render={({ field }) => {
                                 return <MaskedInput mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                                     {...field}
                                     id='telephone'
@@ -91,7 +93,7 @@ const FormStep2 = props => {
 
                         <div className="form-group col-md-13">
                             <label htmlFor="inputZip">Tipo E-mail</label>
-                            <Field component="select" name="emails.email_type" id="email_type" className="form-control">
+                            <Field component="select" name="email.email_type"  className="form-control">
                                 <option value="">-</option>
                                 <option value="Pessoal">Pessoal</option>
                                 <option value="Comercial">Comercial</option>
@@ -101,7 +103,7 @@ const FormStep2 = props => {
 
                         <div className="form-group col-md-04">
                             <label htmlFor="inputZip">E-mail</label>
-                            <Field name="emails.email" className="form-control" />
+                               <Field name="email.email" className="form-control" />
                         </div>
                     </div>
 

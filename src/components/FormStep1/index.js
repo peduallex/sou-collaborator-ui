@@ -15,8 +15,6 @@ const FormStep1 = props => {
   return (
     <Container>
       <Form>
-      
-
           <Title>Cadastro de novo usuário</Title>
           <SubtitleValidacao>*campos obrigatório</SubtitleValidacao>
 
@@ -31,9 +29,10 @@ const FormStep1 = props => {
 
             <div className="col-md-6">
               <label htmlFor="lastName">Sobrenome</label>
-              <Field name="lastName" className="form-control" />
-              {errors.lastName && touched.lastName ? (
-                <div>{errors.lastName}</div>
+
+              <Field name="last_name" className="form-control" />
+              {errors.last_name && touched.last_name ? (
+                <div>{errors.last_name}</div>
               ) : null}
             </div>
 
@@ -68,18 +67,18 @@ const FormStep1 = props => {
 
             <div className="form-group col-md-3">
               <label htmlFor="inputZip">Naturalidade</label>
-              <Field component='select' name='nationality_id' id='nationality_id' className="form-control">
+              <Field component='select' name='country_id' id='country_id' className="form-control">
                 <option value=''>-</option>
-                {naturalyId.map(item =>
+                {countryId.map(item =>
                   <option value={item.id}>{item.name}</option>
                 )};
             </Field>
             </div>
             <div className="form-group col-md-3">
               <label htmlFor="inputZip">Nacionalidade</label>
-              <Field component='select' name='city_id' id='city_id' className="form-control">
+              <Field component='select' name='nationality_id' id='nationality_id' className="form-control">
                 <option value=''>-</option>
-                {countryId.map(item =>
+                {naturalyId.map(item =>
                   <option value={item.id}>{item.name}</option>
                 )};
             </Field>
