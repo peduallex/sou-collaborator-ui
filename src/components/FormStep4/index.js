@@ -109,7 +109,7 @@ class FormStep4 extends Component {
                                 <div className="form-row">
                                     <div className="form-group col-md-04">
                                         <label htmlFor="tipo_documento">Tipo de documento</label>
-                                        <Field component='select' name={`identities.identity_type_id[${idx}]`} id='identity_type_id' className="form-control">
+                                        <Field component='select' name={`identities[${idx}].identity_type_id`} id='identity_type_id' className="form-control">
                                             <option value=''>-</option>
                                             <option value="1">Certidão</option>
                                             <option value="2">RG</option>
@@ -139,9 +139,9 @@ class FormStep4 extends Component {
 
                                     <div className="form-group col-md-2">
                                         <label htmlFor="identities.orgao_emissor">Orgão emissor</label>
-                                        <Field component='select' name={`identities[${idx}].state_issued`} id='id' className="form-control">
+                                        <Field component='select' name={`identities[${idx}].issuing_entity_id`}  className="form-control">
                                             <option value=''>-</option>
-                                            <option value="SSP">SSP</option>
+                                            <option value="1">SSP</option>
                                         </Field>
                                     </div>
 

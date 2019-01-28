@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'formik';
-import MaskedInput from "react-text-mask";
-import Moment from 'moment';
+//import MaskedInput from "react-text-mask";
+//import Moment from 'moment';
 import {
     Button,
     IMG,
@@ -56,7 +56,7 @@ class FormStep6 extends Component {
     }
 
     render() {
-        const { handleSubmit, handlePrev, handleBlur, Calcular, dismissal_date } = this.props;
+        const { handleSubmit,handleNext, handlePrev, handleBlur, Calcular, dismissal_date } = this.props;
         return (
             <Container>
                 <Form>
@@ -70,11 +70,11 @@ class FormStep6 extends Component {
                             <LABEL>Prazo determinado</LABEL>
 
                             <div className="form-check form-check-inline">
-                                <Field name="work_contract.flag_fixed_term" component="input" type="radio" value="SIM" />
+                                <Field name="work_contract.flag_fixed_term" component="input" type="radio" value="S" />
                                 <label className="form-check-label" for="inlineRadio1">SIM</label>
                             </div>
                             <div className="form-check form-check-inline">
-                                <Field name="work_contract.flag_fixed_term" component="input" type="radio" value="NÂO" />
+                                <Field name="flag_fixed_term" component="input" type="radio" value="N" />
                                 <label className="form-check-label" for="inlineRadio1">NÂO</label>
                             </div>
                         </div>
@@ -85,18 +85,7 @@ class FormStep6 extends Component {
                                  <Field name="work_contract.hiring_date" className="form-control"  type="date"  onBlur={(e) => {
                                 Calcular(e);
                                 handleBlur(e);
-                                }} /> 
-
-                                
-                                {/* <Field name="hiring_date" render={({ field }) => {
-                                    return <MaskedInput  mask={[/[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-                                        {...field}
-                                        id='hiring_date'
-                                        onBlur={(e) => { Calcular(e);
-                                            handleBlur(e);
-                                            }} 
-                                        placeholder={'Data'} className="form-control" />
-                                }} /> */}
+                                }} />
                             </div>
                             <div className="form-group col-md-4">
                                 <label for="prazo">Prazo</label>
@@ -107,13 +96,14 @@ class FormStep6 extends Component {
                             </div>
                             <div className="form-group col-md-4">
                                 <label for="data_fim_contrato">Data fim contrato</label>
-                                <Field name="work_contract.dismissal_date" className="form-control" type="date" value={dismissal_date} />
+                                <Field name="work_contract.dismissal_date"  type="date" className="form-control" 
+                                 value={dismissal_date}/>
                             </div>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-4">
                                 <label for="novo_prazo">Novo prazo</label>
-                                <Field name="new_end_date" className="form-control" />
+                                <Field name="work_contract.new_end_date" type="date" className="form-control" />
                             </div>
                             <div className="form-group col-md-4">
                                 <label for="data_fim">Data fim </label>
@@ -160,7 +150,7 @@ class FormStep6 extends Component {
                                 VOLTAR
                     </Button>
 
-                            <Button primary onClick={handleSubmit}>
+                            <Button primary onClick={handleNext}>
                                 VISUALIZAR
                     </Button>
 
