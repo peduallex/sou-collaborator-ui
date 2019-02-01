@@ -14,7 +14,7 @@ import {
 
 
 const FormStep2 = props => {
-    const { handleSubmit, handlePrev, handleCep, endereco } = props;
+    const { handleNext, handlePrev, handleCep, endereco } = props;
     return (
         <Container>
             <Form>
@@ -149,7 +149,7 @@ const FormStep2 = props => {
                             Voltar
 			     </Button>
 
-                        <Button primary onClick={handleSubmit}>
+                        <Button primary onClick={handleNext}>
                             Próxima
 				</Button>
                     </GroupButton>

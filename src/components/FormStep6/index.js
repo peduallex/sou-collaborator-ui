@@ -42,10 +42,10 @@ class FormStep6 extends Component {
         this.setState({ shareholders: newShareholders });
     }
 
-    handleSubmit = (evt) => {
-        const { name, shareholders } = this.state;
-        alert(`Incorporated: ${name} with ${shareholders.length} shareholders`);
-    }
+    // handleSubmit = (evt) => {
+    //     const { name, shareholders } = this.state;
+    //     alert(`Incorporated: ${name} with ${shareholders.length} shareholders`);
+    // }
 
     handleAddShareholder = () => {
         this.setState({ shareholders: this.state.shareholders.concat([{ name: '' }]) });
@@ -56,7 +56,7 @@ class FormStep6 extends Component {
     }
 
     render() {
-        const { handleSubmit,handleNext, handlePrev, handleBlur, Calcular, dismissal_date } = this.props;
+        const {handleNext, handlePrev, handleBlur, Calcular, dismissal_date } = this.props;
         return (
             <Container>
                 <Form>
@@ -107,7 +107,7 @@ class FormStep6 extends Component {
                             </div>
                             <div className="form-group col-md-4">
                                 <label for="data_fim">Data fim </label>
-                                <Field name="work_contract.new_term" className="form-control" />
+                                <Field name="work_contract.new_term"  className="form-control" />
                             </div>
 
 

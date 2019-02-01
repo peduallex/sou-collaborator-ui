@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Title = styled.h2`
   display: block;
@@ -46,4 +47,23 @@ const Datum = styled.span`
   color: #607989;
 `;
 
-export { Title, Subtitle, Row, Col, Data, Item, Datum };
+const GroupButton = styled.div`
+  margin-top: 6vh;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Button = styled(Link)`
+  background-color: ${props => (props.primary ? 'var(--zero)' : 'var(--red)')};
+  text-decoration: none;
+  border: 1px solid var(--red);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  color: ${props => (props.primary ? 'var(--red)' : 'var(--zero)')};
+  cursor: pointer;
+  &:not(:last-of-type) {
+    margin-right: 0.8rem;
+  }
+`;
+
+export { Title, Subtitle, Row, Col, Data, Item, Datum,GroupButton ,Button};
