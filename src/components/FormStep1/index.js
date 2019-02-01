@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Form, Field } from 'formik';
 import MaskedInput from "react-text-mask";
 
@@ -10,9 +10,29 @@ import {
   SubtitleValidacao
 } from './styles';
 
-const FormStep1 = props => {
-  const { errors, touched, countryId, naturalyId, statusesId, ethnicitiesid } = props;
+//const FormStep1 = props => {
+  class FormStep1 extends Component {
+
+    constructor() {
+      super();
+      this.state = {
+          name:""
+      };
+  }  
+
+  render() {
+  const { errors, touched, countryId, naturalyId, statusesId, ethnicitiesid,edit,handleNext } = this.props;
+
+  if (edit == true) {
+      this.state.EditButton = <Button>VISUALIZAR</Button>;
+    } else {
+      this.state.EditButton = <Button primary type="submit">Próximo</Button>;
+  }
+
+
   return (
+
+    //console.log(edit),
     <Container>
       <Form>
           <Title>Cadastro de novo usuário</Title>
@@ -21,7 +41,7 @@ const FormStep1 = props => {
           <div className="form-row">
             <div className="col-md-6">
               <label htmlFor="firstName">Nome</label>
-              <Field name="name" className="form-control" />
+              <Field name="name"   className="form-control" />
               {errors.name && touched.name ? (
                 <div>{errors.name}</div>
               ) : null}
@@ -148,15 +168,16 @@ const FormStep1 = props => {
             </div>
           </div>
           <GroupButton>
-            <Button primary type="submit">
-              Próximo
-        </Button>
+
+            {/* <Button primary type="submit"> */}
+              {this.state.EditButton}
+           {/* </Button> */}
           </GroupButton>
 
        
       </Form >
     </Container>
-  );
-};
-
+    );
+  }
+}
 export default FormStep1;

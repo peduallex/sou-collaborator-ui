@@ -29,7 +29,122 @@ class Cadastro extends Component {
       dependents: [],
       hiring_date: '',
       term: '' ,
-      dismissal_date: ''
+      dismissal_date: '',
+      values: {
+        name: '',
+        last_name: '',
+        birth_date: '',
+        gender: '',
+        flag_on: true,
+        cpf: '',
+        blood_type: '',
+        organ_donor: true,
+        assumed_name: '',
+        flag_pwd: true,
+        flag_visually: true,
+        flag_hearing: true,
+        flag_physically: true,
+        flag_intellectually: true,
+        description_other_pwd: "description3",
+        first_job_ctps: '',
+        first_job_public: '',
+        icd: '',
+        country_id: '',
+        nationality_id: '',
+        ethnicity_id: '',
+        marital_status_id: '',
+        address: {
+           neighborhood: '',
+           street: '',
+           street_number: '',
+           street_type: 'eeeee',
+           zipcode: '',
+           street_complement: '',
+           state: 'xx',
+           city_id: null
+        },
+        city: {
+          name: '',
+          state: '',
+          code: '00000'
+        },
+        telephone: {
+          ddd: 'DDD',
+          telephone: '',
+          telephone_type: '',
+          ddi: 'DDI'
+        },
+        email: {
+          email: '',
+          email_type: ''
+        },
+        department_id: '',
+        dependents:
+          [
+            {
+              name: '',
+              birth_date: '',
+              cpf: '',
+              employee_id: null,
+              dependent_type_id: ''
+            }
+          ],
+
+          
+        education: {
+          course: '',
+          education_level: '',
+          education_institution: '',
+          starting_date: '',
+          finishing_date: '',
+          employee_id: null
+        },
+        parentages:
+          [
+            {
+               name: '',
+               gender: '',
+               birth_date: '',
+               parentage_type_id: ''
+
+            }
+          ],
+        occupation_id: '',
+        identities:
+          [
+            {
+              date_issued: '',
+              description: 'xxxx',
+              number: '',
+              series_number: '',
+              state_issued: '',
+              zone: '',
+              section: '',
+              identity_type_id: '',
+              issuing_entity_id: ''
+            }
+          ],
+        work_contract: {
+          hiring_date: '2005-09-21',
+          end_date: '2005-09-21',
+          examination_date: '2005-09-21',
+          dismissal_date: '2005-09-21',
+          flag_fixed_term: 'S',
+          term: '10',
+          new_end_date: '2005-09-21',
+          new_term: '100000',
+          contracting_regime_id: '1',
+        },
+        tax_benefits:
+          [
+            {
+              name: 'zzz',
+              code: '1234567890',
+              value: '10.10'
+            }
+          ]
+
+      }
     };
   }
 
@@ -37,8 +152,9 @@ class Cadastro extends Component {
     const { location, history } = this.props
 
     if (location.state && location.state.step) {
-      this.setState({ step: location.state.step, edit: true })
+      this.setState({ step: location.state.step, edit: true, values: location.state.values })
       history.push('/cadastro', {})
+     // console.log(this.state.edit)
     }
     const naturalyId = await api.get('nationalities');
     const countryId = await api.get('countries');
@@ -65,7 +181,7 @@ class Cadastro extends Component {
 
 
   handleSubmit = async values => {
-    //api.post('employees', this.state.forms);
+    api.post('employees', this.state.forms);
     // const id = await api.post('employees', this.state.forms)
      //this.props.history.push("/StepSummary/" + id)
      this.props.history.push("/employees", { values })
@@ -127,134 +243,23 @@ class Cadastro extends Component {
   // };
 
   render() {
-    let { step } = this.state;
+    let { step, values } = this.state;
     return step === 1 ? (
       <Formik
         onSubmit={this.handleNext}
-        initialValues={{
-          name: '',
-          last_name: '',
-          birth_date: '',
-          gender: '',
-          flag_on: true,
-          cpf: '',
-          blood_type: '',
-          organ_donor: true,
-          assumed_name: '',
-          flag_pwd: true,
-          flag_visually: true,
-          flag_hearing: true,
-          flag_physically: true,
-          flag_intellectually: true,
-          description_other_pwd: "description3",
-          first_job_ctps: '',
-          first_job_public: '',
-          icd: '',
-          country_id: '',
-          nationality_id: '',
-          ethnicity_id: '',
-          marital_status_id: '',
-          address: {
-             neighborhood: '',
-             street: '',
-             street_number: '',
-             street_type: 'eeeee',
-             zipcode: '',
-             street_complement: '',
-             state: 'xx',
-             city_id: null
-          },
-          city: {
-            name: '',
-            state: '',
-            code: '00000'
-          },
-          telephone: {
-            ddd: 'DDD',
-            telephone: '',
-            telephone_type: '',
-            ddi: 'DDI'
-          },
-          email: {
-            email: '',
-            email_type: ''
-          },
-          department_id: '',
-          dependents:
-            [
-              {
-                name: '',
-                birth_date: '',
-                cpf: '',
-                employee_id: null,
-                dependent_type_id: ''
-              }
-            ],
-          education: {
-            course: '',
-            education_level: '',
-            education_institution: '',
-            starting_date: '',
-            finishing_date: '',
-            employee_id: null
-          },
-          parentages:
-            [
-              {
-                 name: '',
-                 gender: '',
-                 birth_date: '',
-                 parentage_type_id: ''
-
-              }
-            ],
-          occupation_id: '',
-          identities:
-            [
-              {
-                date_issued: '',
-                description: 'xxxx',
-                number: '',
-                series_number: '',
-                state_issued: '',
-                zone: '',
-                section: '',
-                identity_type_id: '',
-                issuing_entity_id: ''
-              }
-            ],
-          work_contract: {
-            hiring_date: '2005-09-21',
-            end_date: '2005-09-21',
-            examination_date: '2005-09-21',
-            dismissal_date: '2005-09-21',
-            flag_fixed_term: 'S',
-            term: '10',
-            new_end_date: '2005-09-21',
-            new_term: '100000',
-            contracting_regime_id: '1',
-          },
-          tax_benefits:
-            [
-              {
-                name: 'zzz',
-                code: '1234567890',
-                value: '10.10'
-              }
-            ]
-
-        }
-        }
+        initialValues={values}
 
         validationSchema={this.getValidationShema}
-        render={props => <FormStep1{...props} naturalyId={this.state.naturalyId} countryId={this.state.countryId} statusesId={this.state.statusesId} ethnicitiesid={this.state.ethnicitiesid}></FormStep1>}
+        render={props => <FormStep1{...props} naturalyId={this.state.naturalyId} countryId={this.state.countryId} statusesId={this.state.statusesId} ethnicitiesid={this.state.ethnicitiesid} edit={this.state.edit}></FormStep1>}
       />
     ) : step === 2 ? (
       <Formik onSubmit={this.handleNext}
+      validationSchema={this.getValidationShema}
         render={props => <FormStep2{...props} handlePrev={this.handlePrev} handleCep={this.handleCep} endereco={this.state.endereco} ></FormStep2>}
       />
     ) : step === 3 ? (
       <Formik onSubmit={this.handleNext}
+      initialValues={values}
         render={props => <FormStep3 {...props} handlePrev={this.handlePrev} />} />
     ) : step === 4 ? (
       <Formik onSubmit={this.handleNext}

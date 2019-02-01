@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Formik, Form } from 'formik';
-import { Title, Subtitle, Row, Col, Data, Item, Datum } from './styles';
+import { Title, Subtitle, Row, Col, Data, Item, Datum,Button,GroupButton } from './styles';
 import editar from '../../assets/img/editar.jpg';
 import { Link } from 'react-router-dom'
 import api from '../../services/api';
@@ -11,27 +11,40 @@ import api from '../../services/api';
 
 class Visualizar extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryId: [],
+      naturalyId: []
+    }
+  }
+
   async componentWillMount() {
-    const countryId = await api.get('countries/1');
+    const countryId = await api.get('countries');
+    const naturalyId = await api.get('nationalities');
     this.setState({
-      countryId: countryId.data.data
+      countryId: countryId.data.data,
+      naturalyId: naturalyId.data.data
     });
   }
+
   render() {
-    const { handleSubmit, buttons, values } = this.props;
+    const { handleSubmit, buttons, values} = this.props;
     return (
       <Formik onSubmit={handleSubmit}>
         <Form>
-          {console.log(values)}
+          {/*{console.log(values)} */}
           <Title>{values.name + " "}</Title>
           <Subtitle>Dados Pessoais
-  <Link to={{
+          <Link to={{
               pathname: '/cadastro',
-              state: { step: 1 }
-            }}><img src={editar} /></Link>
+              state: { 
+                step: 1,
+                values
+               }
+            }}><img src={editar} />
+          </Link>
           </Subtitle>
-
-
           <Row>
             <Col>
               <Data>
@@ -43,28 +56,33 @@ class Visualizar extends Component {
                 </Item>
                 <Item>
                   Nome Social
-          <Datum>{values.assumed_name || 'Não possui'}</Datum>
+                <Datum>{values.assumed_name || 'Não possui'}</Datum>
                 </Item>
                 <Item>
-                  <Item>
+                 
                     Data de nascimento{' '}
                     <Datum>
                       {values.birth_date}
                     </Datum>
                   </Item>
-                </Item>
+                
                 <Item>
                   Sexo{' '}
                   <Datum>
                     {values.gender === 'F' ? 'Feminino' : 'Masculino'}
                   </Datum>
                 </Item>
-                <Item>
-                  Naturalidade <Datum>{values.country_id}</Datum>
-                </Item>
-                <Item>
-                  Nacionalidade <Datum>{values.nationality_id}</Datum>
-                </Item>
+
+                {this.state.countryId.map(item => {
+                  if (item.id == values.country_id)
+                    return <Item> Naturalidade <Datum>{item.name}</Datum></Item>
+                })}
+
+                {this.state.naturalyId.map(item => {
+                  if (item.id == values.nationality_id)
+                    return <Item> Nacionalidade <Datum>{item.name}</Datum></Item>
+                })}
+
                 <Item>
                   CPF{' '}
                   <Datum>
@@ -87,6 +105,16 @@ class Visualizar extends Component {
                 </Item>
               </Data>
             </Col>
+            </Row>
+            <Subtitle>Endereço</Subtitle>
+            <Link to={{
+            pathname: '/cadastro',
+            state: 
+            { step: 2,
+              values 
+            }
+            }}><img src={editar} /></Link>
+            <Row>
             <Col>
               <Data>
                 <Item>
@@ -127,17 +155,19 @@ class Visualizar extends Component {
                 </Item>
                 <Item>
                   E-mail profissional
-              <Datum>{values.professionalEmail}</Datum>
+                 <Datum>{values.professionalEmail}</Datum>
                 </Item>
               </Data>
             </Col>
           </Row>
-
           <Subtitle>Dependentes</Subtitle>
           <Link to={{
             pathname: '/cadastro',
-            state: { step: 3 }
-          }}><img src={editar} /></Link>
+            state: 
+            { step: 3,
+              values 
+            }
+            }}><img src={editar} /></Link>
           <Row>
             <Col key={values.dependents.id}>
               {values.dependents.map(function (item, i) {
@@ -156,6 +186,7 @@ class Visualizar extends Component {
           </Row>
 
           <Subtitle>Filiação</Subtitle>
+          
           <Row>
             <Col key={values.parentages.id}>
               {values.parentages.map(function (item, i) {
@@ -172,19 +203,24 @@ class Visualizar extends Component {
               })}
             </Col>
           </Row>
-
           <Subtitle>Escolaridade</Subtitle>
+          <Link to={{
+            pathname: '/cadastro',
+            state: 
+            { step: 4,
+              values 
+            }
+            }}><img src={editar} /></Link>
           <Row>
             <Col>
-
               <Data>
                 <Item>
                   Instituição
-               <Datum> {values.education.education_institution}</Datum>
+                <Datum> {values.education.education_institution}</Datum>
                 </Item>
                 <Item>
                   Grau
-               <Datum> {values.education.education_level}</Datum>
+                <Datum> {values.education.education_level}</Datum>
                 </Item>
                 <Item>
                   Curso
@@ -192,17 +228,23 @@ class Visualizar extends Component {
                 </Item>
                 <Item>
                   Data Inicio
-               <Datum> {values.education.starting_date}</Datum>
+                <Datum> {values.education.starting_date}</Datum>
                 </Item>
                 <Item>
                   Data Fim
-               <Datum> {values.education.finishing_date}</Datum>
+                <Datum> {values.education.finishing_date}</Datum>
                 </Item>
               </Data>
             </Col>
           </Row>
-
           <Subtitle>Documentos</Subtitle>
+          <Link to={{
+            pathname: '/cadastro',
+            state: 
+            { step: 5,
+              values 
+            }
+            }}><img src={editar} /></Link>
           <Row>
             <Col key={values.identities.id}>
               {values.identities.map(function (item, i) {
@@ -244,38 +286,50 @@ class Visualizar extends Component {
             </Col>
           </Row>
           <Subtitle>Dados Contratuais</Subtitle>
+          <Link to={{
+            pathname: '/cadastro',
+            state: 
+            { step: 6,
+              values 
+            }
+            }}><img src={editar} /></Link>
           <Row>
             <Col>
               <Data>
-                  <Item>
-                    Prazo determinado
+                <Item>
+                  Prazo determinado
                <Datum> {values.work_contract.flag_fixed_term}</Datum>
-                  </Item>
-                  <Item>
-                    Data admissão
+                </Item>
+                <Item>
+                  Data admissão
                <Datum> {values.work_contract.hiring_date}</Datum>
-                  </Item>
-                  <Item>
-                    Prazo
+                </Item>
+                <Item>
+                  Prazo
                <Datum> {values.work_contract.term}</Datum>
-                  </Item>
-                  <Item>
-                    Data fim contrato
+                </Item>
+                <Item>
+                  Data fim contrato
                <Datum> {values.work_contract.dismissal_date}</Datum>
-                  </Item>
-                  <Item>
-                    Novo prazo
+                </Item>
+                <Item>
+                  Novo prazo
                <Datum> {values.work_contract.new_end_date}</Datum>
-                  </Item>
-                  <Item>
-                    Data fim
+                </Item>
+                <Item>
+                  Data fim
                <Datum> {values.work_contract.new_term}</Datum>
-                  </Item>
-                </Data>
+                </Item>
+              </Data>
             </Col>
           </Row>
 
-          {buttons}
+          {/* <GroupButton>
+          <Button primary to="/cadastro" >
+            FINALIZAR
+           </Button>
+        </GroupButton> */}
+        {buttons}
         </Form>
       </Formik>
       //)

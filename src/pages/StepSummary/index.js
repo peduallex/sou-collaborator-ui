@@ -6,8 +6,10 @@ import api from '../../services/api';
 
 
 class StepSummary extends Component {
-
-  state = {  };
+  constructor() {
+    super();
+    this.state = {  };
+  }
   // async componentDidMount() {
   //   const id = this.props.match.params.id
   //   const personal = await api.get('employees/' + id);
@@ -27,8 +29,8 @@ class StepSummary extends Component {
          {/* <Visualizar personal={this.state.personal} /> */}
          {/* <Visualizar values={this.state.personal} />  */}
         <GroupButton>
-          <Button primary to="/internship">
-            Voltar
+          <Button primary to="/cadastro" >
+            FINALIZAR
            </Button>
         </GroupButton>
       </Container>
